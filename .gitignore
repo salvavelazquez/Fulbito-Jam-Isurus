@@ -1,0 +1,50 @@
+# Unity generated
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ibrary/
+[Ll]ocal[Cc]ache/
+[Uu]ser[Ss]ettings/
+[Gg]enerated[Ll]ibrary/
+[Aa]ssets/[Ss]hader[Cc]ache/
+[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/
+
+# Visual Studio / IDEs
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.vs/
+.idea/
+*.DotSettings
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Logs & Cache
+*.log
+*.cache
+*.backup
+
+# Rider / JetBrains
+*.asmdef.meta~
+*.bak
+*.swp
