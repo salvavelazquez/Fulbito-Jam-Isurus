@@ -6,7 +6,9 @@ TagManager:
   tags:
   - layer
   - AlfajorMarron
-  - AlfajorAzul
+  - Obstaculo
+  - AlfajorRosado
+  - AlfajorBlanco
   layers:
   - Default
   - TransparentFX

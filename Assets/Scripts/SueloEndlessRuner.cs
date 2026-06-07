@@ -22,11 +22,19 @@ public class SueloEndlessRuner : MonoBehaviour
         float offsetY = Time.time * -velocidadY;
 
         // Le asignamos el nuevo desfase a la textura principal del material
-        miRenderer.material.mainTextureOffset = new Vector2(0, offsetY);
+        miRenderer.material.mainTextureOffset = new Vector2(offsetX, offsetY);
     }
-    public void CambiarMaterial(Material materialSuelo)
+    public void CambiarMaterial(Material materialSuelo,Material Paredes)
     {
         // Cambia el material del suelo al material de hielo
         miRenderer.material = materialSuelo;
+        Renderer[] rendererParedes = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in rendererParedes)
+        {
+            if (renderer != miRenderer)
+            {
+                renderer.material = Paredes;
+            }
+        }
     }
 }
