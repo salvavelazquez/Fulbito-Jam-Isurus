@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 3
   tags:
   - layer
+  - AlfajorMarron
+  - AlfajorAzul
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Suelo
   - Water
   - UI
   - 
