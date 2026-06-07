@@ -15,7 +15,9 @@ public class MovimientoPlayer : MonoBehaviour
      [SerializeField] LayerMask capaSuelo;
      [SerializeField] Transform comprobadorSuelo;
      Rigidbody rb;
-     void Awake()
+
+    public bool esGrande; //USALO CUANDO EL PLAYER SEA GRANDOTE COSA QUE NO MUERAS CON LOS OBSTACULOS
+    void Awake()
      {
         rb= GetComponent<Rigidbody>();
     }

@@ -2,29 +2,31 @@ using UnityEngine;
 
 public class CollisionConAlfajores : MonoBehaviour
 {
-    public Material sueloHelado;
+    [Header ("Efecto de Alfajor de Blanco")]
+    public Material sueloBlanco;
+    public Material paredesBlanco;
+    [Header("Efecto de Alfajor de Chocolate")]
     public Material sueloRocoso2;
+    public Material paredesMarron;
+    [Header("Efecto de Alfajor de Rosado")]
+    public Material sueloRosado;
+    public Material paredesRosado;
+    [Space]
     public SueloEndlessRuner cambioDeMapa;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("AlfajorAzul"))
+        if (other.CompareTag("AlfajorBlanco"))
         {
-            cambioDeMapa.CambiarMaterial(sueloHelado);
+            cambioDeMapa.CambiarMaterial(sueloBlanco,paredesBlanco);
         }
         else if (other.CompareTag("AlfajorMarron"))
         {
-            cambioDeMapa.CambiarMaterial(sueloRocoso2);
+            cambioDeMapa.CambiarMaterial(sueloRocoso2,paredesMarron);
+        }
+        else if (other.CompareTag("AlfajorRosado"))
+        {
+            cambioDeMapa.CambiarMaterial(sueloRosado, paredesRosado);
         }
     }
 }

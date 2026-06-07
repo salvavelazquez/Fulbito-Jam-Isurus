@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,5 +20,19 @@ public class GameManager : MonoBehaviour
         cantidadAlfajores++;
 
         textoAlfajores.text = "Alfajores: " + cantidadAlfajores;
+        if (cantidadAlfajores >= 5)
+        {
+            GanarPartida();
+        }
+    }
+    public void GanarPartida()
+    {
+        Debug.Log("¡Has ganado la partida! Has recolectado " + cantidadAlfajores + " alfajores.");
+        SceneManager.LoadScene(3);
+    }
+
+    public void PerderPartida()
+    {
+        SceneManager.LoadScene(4);
     }
 }
