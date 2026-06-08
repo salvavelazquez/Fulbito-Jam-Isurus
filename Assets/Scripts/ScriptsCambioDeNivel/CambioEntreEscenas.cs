@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CambioEntreEscenas : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class CambioEntreEscenas : MonoBehaviour
     [Header("Referencias UI")]
     [SerializeField] private GameObject panelPausa;
     [SerializeField] private GameObject panelInicio;
-
     private bool enPausa = false;
 
     private void Awake()
