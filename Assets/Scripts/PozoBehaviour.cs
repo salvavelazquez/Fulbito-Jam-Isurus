@@ -28,6 +28,7 @@ public class PozoBehaviour : MonoBehaviour
             Debug.Log("¡El jugador ha caído en el pozo!");
             Collider player=other.GetComponent<Collider>();
             player.enabled = false; // Desactiva el collider del jugador para evitar colisiones adicionales
+            GameManager.instancia.PerderPartida();
         }
     }
 }
