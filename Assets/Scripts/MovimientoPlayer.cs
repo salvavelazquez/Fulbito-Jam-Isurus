@@ -15,9 +15,15 @@ public class MovimientoPlayer : MonoBehaviour
      [SerializeField] LayerMask capaSuelo;
      [SerializeField] Transform comprobadorSuelo;
      Rigidbody rb;
-
+    public Animator animOsito;
+    public Animator animGolem;
+    public Animator animRosado;
+    private Animator anim;
     public GameObject ositoNormal;
     public GameObject golemChocolate;
+    public GameObject ositoRosado;
+
+    
     public bool esGrande; //USALO CUANDO EL PLAYER SEA GRANDOTE COSA QUE NO MUERAS CON LOS OBSTACULOS
     void Awake()
      {
@@ -26,6 +32,7 @@ public class MovimientoPlayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        anim = animOsito;
         arrayPosicionesHijos= new Transform[posicionParent.childCount];
         for (int i = 0; i < posicionParent.childCount; i++)
         {
@@ -50,6 +57,7 @@ public class MovimientoPlayer : MonoBehaviour
         transform.position= Vector3.MoveTowards(transform.position, posicionObjetivo, velocidadMovimiento*Time.deltaTime);
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            anim.SetTrigger("isJump");
             Salto();
         }
     }
@@ -66,16 +74,26 @@ public class MovimientoPlayer : MonoBehaviour
     public void TransformarGolem()
     {
         esGrande = true;
-
         ositoNormal.SetActive(false);
         golemChocolate.SetActive(true);
+        ositoRosado.SetActive(false);
+        anim = animGolem;
     }
 
     public void TransformarOsito()
     {
         esGrande = false;
-
+        ositoRosado.SetActive(false);
         golemChocolate.SetActive(false);
         ositoNormal.SetActive(true);
+        anim = animOsito;
+    }
+    public void TransformarOsitoRosado()
+    {
+        esGrande=false;
+        golemChocolate.SetActive(false);
+        ositoNormal.SetActive(false);
+        ositoRosado.SetActive(true);
+        anim = animRosado;
     }
 }

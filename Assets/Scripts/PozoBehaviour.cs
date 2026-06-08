@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PozoBehaviour : MonoBehaviour
 {
-    private float speed = 30f;
+    private float speed = 20f;
     private float downBound = -21;
     // Start is called before the first frame update
     void Start()

@@ -11,6 +11,7 @@ public class CambioEntreEscenas : MonoBehaviour
     [Header("Referencias UI")]
     [SerializeField] private GameObject panelPausa;
     [SerializeField] private GameObject panelInicio;
+    [SerializeField] private GameObject panelComoJuegar;
     private bool enPausa = false;
 
     private void Awake()
@@ -69,5 +70,15 @@ public class CambioEntreEscenas : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Saliendo del juego...");
+    }
+    public void DesactivarPanel()
+    {
+        panelComoJuegar.SetActive(false);
+        panelInicio.SetActive(true);
+    }
+    public void ActivarPanel()
+    {
+        panelComoJuegar.SetActive(true);
+        panelInicio.SetActive(false);
     }
 }
