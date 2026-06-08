@@ -16,6 +16,8 @@ public class MovimientoPlayer : MonoBehaviour
      [SerializeField] Transform comprobadorSuelo;
      Rigidbody rb;
 
+    public GameObject ositoNormal;
+    public GameObject golemChocolate;
     public bool esGrande; //USALO CUANDO EL PLAYER SEA GRANDOTE COSA QUE NO MUERAS CON LOS OBSTACULOS
     void Awake()
      {
@@ -35,11 +37,11 @@ public class MovimientoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A) && indexPosicionActual>0)
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && indexPosicionActual>0)
         {
             indexPosicionActual--;
         }
-        if(Input.GetKeyDown(KeyCode.D) && indexPosicionActual<arrayPosicionesHijos.Length-1)
+        if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && indexPosicionActual<arrayPosicionesHijos.Length-1)
         {
             indexPosicionActual++;
         }
@@ -59,5 +61,21 @@ public class MovimientoPlayer : MonoBehaviour
         {
             rb.AddForce(Vector3.up*fuerzaSalto, ForceMode.Impulse);
         }
+    }
+
+    public void TransformarGolem()
+    {
+        esGrande = true;
+
+        ositoNormal.SetActive(false);
+        golemChocolate.SetActive(true);
+    }
+
+    public void TransformarOsito()
+    {
+        esGrande = false;
+
+        golemChocolate.SetActive(false);
+        ositoNormal.SetActive(true);
     }
 }
