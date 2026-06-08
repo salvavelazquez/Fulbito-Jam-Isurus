@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int faseActual = 0;
     private int cantidadAlfajores = 0;
     public SpawnerAlfajores spawner;
+    public static int puntajeFinal;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     public void GanarPartida()
     {
         Debug.Log("¡Has ganado la partida! Has recolectado " + cantidadAlfajores + " alfajores.");
+        puntajeFinal = cantidadAlfajores;
         SceneManager.LoadScene(3);
     }
 
