@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour
         cantidadAlfajores++;
 
         textoAlfajores.text = "Alfajores: " + cantidadAlfajores;
-        
+        if (cantidadAlfajores>=30)
+        {
+            GanarPartida();
+        }
     }
 
     public int ObtenerCantidadAlfajores()

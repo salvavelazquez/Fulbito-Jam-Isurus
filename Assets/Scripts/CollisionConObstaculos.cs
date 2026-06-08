@@ -7,6 +7,7 @@ public class CollisionConObstaculos : MonoBehaviour
     public ParticleSystem collisionEffect02;
     public ParticleSystem collisionEffect03;
     MovimientoPlayer playerChocolate;
+    public AudioClip choque;
     private void Awake()
     {
         playerChocolate = GetComponent<MovimientoPlayer>();
@@ -20,12 +21,13 @@ public class CollisionConObstaculos : MonoBehaviour
             collisionEffect01.Play();
             collisionEffect02.Play();
             collisionEffect03.Play();
+            AudioSource.PlayClipAtPoint(choque, transform.position);
             StartCoroutine(EsperarYMorir());
         }
     }
     IEnumerator EsperarYMorir()
     {
-        yield return new WaitForSeconds(0.4f); // Espera 1 segundo antes de ejecutar el código siguiente
+        yield return new WaitForSeconds(0.6f); // Espera 1 segundo antes de ejecutar el código siguiente
         GameManager.instancia.PerderPartida(); // Llama al método para perder la partida
     }
 }

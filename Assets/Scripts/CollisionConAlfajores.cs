@@ -8,11 +8,10 @@ public class CollisionConAlfajores : MonoBehaviour
     [Header("Efecto de Alfajor de Chocolate")]
     public Material sueloBlanco;
     public Material paredesBlanco;
+    [Header("Efecto de Alfajor Rosado")]
+    public Material sueloRosado;
+    public Material paredesRosadas;
     public IntroCamara introCamara;
-
-    //[Header("Efecto de Alfajor de Rosado")]
-    //public Material sueloRosado;
-    //public Material paredesRosado;
     [Space]
     public SueloEndlessRuner cambioDeMapa;
     public MovimientoPlayer player;
@@ -50,7 +49,14 @@ public class CollisionConAlfajores : MonoBehaviour
         }
         if (other.CompareTag("AlfajorRosado"))
         {
-            GameManager.instancia.GanarPartida();
+            //GameManager.instancia.GanarPartida();
+            player.TransformarOsitoRosado();
+            cambioDeMapa.CambiarMaterial(
+                sueloRosado,
+                paredesRosadas
+            );
+            player.esGrande = false;
+            player.TransformarOsitoRosado();
         }
     }
 }
