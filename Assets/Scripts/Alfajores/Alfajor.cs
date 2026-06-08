@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Alfajor : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Choque con: " + other.name);
@@ -14,5 +15,6 @@ public class Alfajor : MonoBehaviour
 
             Destroy(gameObject);
         }
+
     }
 }

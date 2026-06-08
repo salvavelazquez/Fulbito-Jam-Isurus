@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class SueloEndlessRuner : MonoBehaviour
 {
-    
+    public Renderer paredIzquierda;
+    public Renderer paredDerecha;
+    public Renderer paredFrontal1;
+    public Renderer paredFrontal2;
+
     // Puedes ajustar esta velocidad desde el Inspector
     public float velocidadX = 0f;
     public float velocidadY = 0.5f;
@@ -24,17 +28,15 @@ public class SueloEndlessRuner : MonoBehaviour
         // Le asignamos el nuevo desfase a la textura principal del material
         miRenderer.material.mainTextureOffset = new Vector2(offsetX, offsetY);
     }
-    public void CambiarMaterial(Material materialSuelo,Material Paredes)
+    public void CambiarMaterial(
+    Material materialSuelo,
+    Material materialParedes)
     {
-        // Cambia el material del suelo al material de hielo
         miRenderer.material = materialSuelo;
-        Renderer[] rendererParedes = GetComponentsInChildren<Renderer>();
-        foreach (Renderer renderer in rendererParedes)
-        {
-            if (renderer != miRenderer)
-            {
-                renderer.material = Paredes;
-            }
-        }
+
+        paredIzquierda.material = materialParedes;
+        paredDerecha.material = materialParedes;
+        paredFrontal1.material = materialParedes;
+        paredFrontal2.material = materialParedes;
     }
 }

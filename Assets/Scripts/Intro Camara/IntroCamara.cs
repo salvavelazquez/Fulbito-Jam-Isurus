@@ -3,16 +3,32 @@ using System.Collections;
 
 public class IntroCamara : MonoBehaviour
 {
-    public Transform cameraInicio;
-    public Transform cameraJuego;
+    public Transform camaraFrontalOsito;
+    public Transform camaraFrontalGolem;
+    public Transform camaraJuego;
 
     public float tiempoEspera = 2f;
     public float velocidadTransicion = 2f;
 
-    IEnumerator Start()
+    private bool transicionActiva = false;
+
+    void Start()
     {
-        transform.position = cameraInicio.position;
-        transform.rotation = cameraInicio.rotation;
+        StartCoroutine(TransicionDesde(camaraFrontalOsito));
+    }
+
+    public void MostrarGolem()
+    {
+        if (!transicionActiva)
+            StartCoroutine(TransicionDesde(camaraFrontalGolem));
+    }
+
+    IEnumerator TransicionDesde(Transform origen)
+    {
+        transicionActiva = true;
+
+        transform.position = origen.position;
+        transform.rotation = origen.rotation;
 
         yield return new WaitForSeconds(tiempoEspera);
 
@@ -28,18 +44,20 @@ public class IntroCamara : MonoBehaviour
             transform.position =
                 Vector3.Lerp(
                     posInicial,
-                    cameraJuego.position,
+                    camaraJuego.position,
                     t
                 );
 
             transform.rotation =
                 Quaternion.Lerp(
                     rotInicial,
-                    cameraJuego.rotation,
+                    camaraJuego.rotation,
                     t
                 );
 
             yield return null;
         }
+
+        transicionActiva = false;
     }
 }

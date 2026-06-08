@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instancia;
 
     public TextMeshProUGUI textoAlfajores;
-
+    public int faseActual = 0;
     private int cantidadAlfajores = 0;
+    public SpawnerAlfajores spawner;
 
     private void Awake()
     {
@@ -20,11 +21,14 @@ public class GameManager : MonoBehaviour
         cantidadAlfajores++;
 
         textoAlfajores.text = "Alfajores: " + cantidadAlfajores;
-        if (cantidadAlfajores >= 5)
-        {
-            GanarPartida();
-        }
+        
     }
+
+    public int ObtenerCantidadAlfajores()
+    {
+        return cantidadAlfajores;
+    }
+
     public void GanarPartida()
     {
         Debug.Log("¡Has ganado la partida! Has recolectado " + cantidadAlfajores + " alfajores.");
