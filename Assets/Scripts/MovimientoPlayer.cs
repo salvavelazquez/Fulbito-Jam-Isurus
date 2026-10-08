@@ -44,21 +44,53 @@ public class MovimientoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && indexPosicionActual>0)
+        // Movimiento izquierda / derecha
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            indexPosicionActual--;
+            MoverIzquierda();
         }
-        if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && indexPosicionActual<arrayPosicionesHijos.Length-1)
+
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            indexPosicionActual++;
+            MoverDerecha();
         }
-        posicionActual= arrayPosicionesHijos[indexPosicionActual];
-        Vector3 posicionObjetivo = new Vector3(posicionActual.position.x, transform.position.y, posicionActual.position.z);
-        transform.position= Vector3.MoveTowards(transform.position, posicionObjetivo, velocidadMovimiento*Time.deltaTime);
-        if(Input.GetKeyDown(KeyCode.Space))
+
+        // Actualizar posición objetivo
+        posicionActual = arrayPosicionesHijos[indexPosicionActual];
+
+        Vector3 posicionObjetivo = new Vector3(
+            posicionActual.position.x,
+            transform.position.y,
+            posicionActual.position.z
+        );
+
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            posicionObjetivo,
+            velocidadMovimiento * Time.deltaTime
+        );
+
+        // Salto
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("isJump");
             Salto();
+        }
+    }
+
+    public void MoverIzquierda()
+    {
+        if (indexPosicionActual > 0)
+        {
+            indexPosicionActual--;
+        }
+    }
+
+    public void MoverDerecha()
+    {
+        if (indexPosicionActual < arrayPosicionesHijos.Length - 1)
+        {
+            indexPosicionActual++;
         }
     }
 
